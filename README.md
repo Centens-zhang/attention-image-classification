@@ -62,23 +62,6 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 ```
 
-#### Azure环境
-
-```bash
-# 在Azure ML Compute Instance上
-git clone https://github.com/Centens-zhang/attention-image-classification.git
-cd attention-image-classification
-pip install -r requirements.txt
-```
-
-#### AutoDL环境
-
-```bash
-# AutoDL平台已预装PyTorch，只需安装其他依赖
-git clone https://github.com/Centens-zhang/attention-image-classification.git
-cd attention-image-classification
-pip install matplotlib tensorboard tqdm pandas seaborn thop
-```
 
 ### 运行实验
 
