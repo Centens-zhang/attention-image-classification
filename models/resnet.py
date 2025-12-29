@@ -179,7 +179,8 @@ class ResNet(nn.Module):
                 nn.init.constant_(m.bias, 0)
             elif isinstance(m, nn.Linear):
                 nn.init.normal_(m.weight, 0, 0.01)
-                nn.init.constant_(m.bias, 0)
+                if m.bias is not None:
+                    nn.init.constant_(m.bias, 0)
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """前向传播"""
@@ -244,6 +245,11 @@ def get_model(model_name: str, num_classes: int = 10) -> nn.Module:
 
 if __name__ == '__main__':
     # 测试所有模型变体
+    import sys
+    import os
+    # 添加父目录到path以支持绝对导入
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    
     print("测试ResNet模型及其变体...")
     
     model_names = ['resnet18', 'resnet18_se', 'resnet18_cbam', 'resnet18_se_cbam']
