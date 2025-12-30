@@ -198,7 +198,7 @@ def main(args):
     # 定义学习率调度器
     scheduler = optim.lr_scheduler.CosineAnnealingLR(
         optimizer,
-        T_max=config.epochs
+        T_max=config.num_epochs
     )
     
     # 创建日志记录器
@@ -211,13 +211,13 @@ def main(args):
         start_epoch = logger.load_checkpoint(checkpoint_path, model, optimizer, scheduler)
     
     # 训练循环
-    print(f"\n开始训练 (共{config.epochs}个epoch)...")
+    print(f"\n开始训练 (共{config.num_epochs}个epoch)...")
     print(f"学习率: {config.lr}, Batch Size: {config.batch_size}")
-    print(f"数据增强: {'是' if config.use_data_augmentation else '否'}")
+    print(f"数据增强: {'是' if config.use_augmentation else '否'}")
     
-    for epoch in range(start_epoch, config.epochs + 1):
+    for epoch in range(start_epoch, config.num_epochs + 1):
         print(f"\n{'='*60}")
-        print(f"Epoch: {epoch}/{config.epochs}")
+        print(f"Epoch: {epoch}/{config.num_epochs}")
         print(f"学习率: {optimizer.param_groups[0]['lr']:.6f}")
         print('='*60)
         
